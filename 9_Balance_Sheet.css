@@ -1,0 +1,340 @@
+/*
+The CSS clip property is used to define the visible portions of an element. 
+Set the span[class~="sr-only"] selector to have a clip property of rect(1px, 1px, 1px, 1px).
+
+The clip-path property determines the shape the 
+clip property should take. Set both the clip-path 
+and -webkit-clip-path properties to the value of inset(50%), 
+forming the clip-path into a rectangle within the element.
+
+span[class~="sr-only"] {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  -webkit-clip-path: inset(50%);
+
+}
+
+Now you need to size these elements down. 
+Give your span[class~="sr-only"] selector a width and height property set to 1px.
+
+span[class~="sr-only"] {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  -webkit-clip-path: inset(50%);
+  height: 1px;
+  width: 1px;
+  
+}
+
+
+To prevent the text content from overflowing, 
+give your span[class~="sr-only"] selector an 
+overflow property set to hidden and a white-space property set to nowrap.
+
+span[class~="sr-only"] {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  -webkit-clip-path: inset(50%);
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+  
+}
+
+Finally, you need to take these hidden elements out of the document flow. 
+Give the span[class~="sr-only"] selector a position property set to absolute, 
+a padding property set to 0, and a margin property set to -1px. 
+This will ensure that not only are they no longer visible, 
+but they are not even within the page view.
+
+The :first-of-type pseudo-selector is used to target
+the first element that matches the selector.
+
+The last part of your table heading is your years. Create a #years selector, 
+and enable flexbox. Justify the content to the end of the flex direction, 
+and make the element sticky. Fix it to the top of its container with top: 0.
+
+The calc() function is a CSS function that allows you to calculate a 
+value based on other values. For example, you can use it to calculate 
+the width of the viewport minus the margin of an element:
+
+.example {
+  margin: 10px;
+  width: calc(100% - 20px);
+}
+Ensure your years do not get hidden by setting a z-index of 999. 
+Then, give it a margin of 0 -2px, 
+and a padding set to 0.5rem calc(1.25rem + 2px) 0.5rem 0.
+
+Style the text within your #years element by creating 
+a #years span[class] selector. The span[class] syntax will target 
+any span element that has a class attribute set, regardless of the attribute's value.
+
+Give your new selector a bold font, a width of 4.5rem, and text aligned to the right.
+
+Before you start diving in to the table itself, 
+your span elements are currently bolded. 
+Create a span:not(.sr-only) selector 
+and give it a font-weight property set to normal.
+
+The :not() pseudo-selector is used to target 
+all elements that do not match the selector - 
+in this case, any of your span elements 
+that do not have the sr-only class. 
+This ensures that your earlier rules 
+for the span[class~="sr-only"] selector are not overwritten.
+
+Create a table selector to target your tables. 
+Set the border-collapse property to collapse, 
+which will allow cell borders to collapse into a single border, 
+instead of a border around each cell. 
+Also set the border property to 0 to hide the borders themselves.
+
+Ensure your table fills its container with a width property set to 100%, 
+then position it relatively and give it a top margin of 3rem.
+
+Now target the th elements within your table body, 
+and give them a width of the entire container, less 12rem.
+
+tbody th {
+  width:calc(100% - 12rem);
+  
+}
+
+The [attribute="value"] selector targets any element 
+that has an attribute with a specific value. Create a tr[class="total"] 
+selector to target specifically your tr elements with the total class. 
+Give it a bottom border of 4px double #0a0a23 and make the font bold.
+
+tr[class="total"] {
+  border-bottom: 4px double #0a0a23;
+  font-weight:bold;
+}
+
+Using the same selector syntax, target the th elements 
+within your table rows where the class is total. 
+Align the text to the left, and 
+give them a padding of 0.5rem 0 0.25rem 0.5rem.
+
+tr[class="total"] th{
+  text-align:left;
+  padding:0.5rem 0 0.25rem 0.5rem;
+}
+
+The key difference between tr[class="total"] and 
+tr.total is that the first will select tr elements 
+where the only class is total. The second will 
+select tr elements where the class includes total.
+
+In your case, tr.total will work. You can use this 
+selector to target all td elements within your .total rows. 
+Align the text to the right, and give them a padding of 0 0.25rem.
+
+tr.total td{
+  text-align:right;
+  padding:0 0.25rem;
+}
+
+The :nth-of-type() pseudo-selector is used 
+to target specific elements based on their 
+order among siblings of the same type. 
+Use this pseudo-selector to target 
+the third td element within your total table rows. 
+Give it a right padding of 0.5rem.
+
+tr.total td:nth-of-type(3) {
+  padding:0.5rem;
+}
+
+Select the tr elements with the class set to data. 
+Give them a background image of 
+linear-gradient(to bottom, #dfdfe2 1.845rem, white 1.845rem).
+
+tr.data {
+  background-image:linear-gradient(to bottom, #dfdfe2 1.845rem, white 1.845rem);
+}
+
+Create a tr.data th .description selector 
+to target the elements with the class set to description 
+that are within your th elements in your .data table rows. 
+Give them a block display, make the text italic with a normal weight, 
+and position them with a padding 
+set to 1rem 0 0.75rem and a right margin of -13.5rem.
+
+tr.data th .description {
+  display:block;
+  font-style:italic;
+  font-weight:normal;
+  padding:1rem 0 0.75rem;
+  margin-right:-13.5rem;
+}
+
+Your dollar amounts are currently misaligned. 
+Create a selector to target the td elements
+ within your tr.data elements. 
+ Vertically align the text to the top, 
+ horizontally align the text to the right, 
+ and set the padding to 0.3rem 0.25rem 0.
+
+ tr.data td {
+  vertical-align:top;
+  text-align:right;
+  padding:0.3rem 0.25rem 0;
+}
+
+------------------------------------------------------------*/
+
+span[class~="sr-only"] {
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  clip-path: inset(50%) !important;
+  -webkit-clip-path: inset(50%) !important;
+  height: 1px !important;
+  width: 1px !important;
+  position: absolute !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  padding: 0 !important;
+  margin: -1px !important;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  color: #0a0a23;
+}
+
+h1 {
+  max-width: 37.25rem;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem;
+}
+
+h1 .flex {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 1rem;
+}
+
+h1 .flex span:first-of-type {
+  font-size: 0.7em;
+}
+
+h1 .flex span:last-of-type {
+  font-size: 1.2em;
+}
+
+section {
+  max-width: 40rem;
+  margin: 0 auto;
+  border: 2px solid #d0d0d5;
+}
+
+#years {
+  display: flex;
+  justify-content: flex-end;
+  position: sticky;
+  top: 0;
+  background: #0a0a23;
+  color: #fff;
+  z-index: 999;
+  padding: 0.5rem calc(1.25rem + 2px) 0.5rem 0;
+  margin: 0 -2px;
+}
+
+#years span[class] {
+  font-weight: bold;
+  width: 4.5rem;
+  text-align: right;
+}
+
+.table-wrap {
+  padding: 0 0.75rem 1.5rem 0.75rem;
+}
+
+table {
+  border-collapse: collapse;
+  border: 0;
+  width: 100%;
+  position: relative;
+  margin-top: 3rem;
+}
+
+table caption {
+  color: #356eaf;
+  font-size: 1.3em;
+  font-weight: normal;
+  position: absolute;
+  top: -2.25rem;
+  left: 0.5rem;
+}
+
+tbody td {
+  width: 100vw;
+  min-width: 4rem;
+  max-width: 4rem;
+}
+
+tbody th {
+  width: calc(100% - 12rem);
+}
+
+tr[class="total"] {
+  border-bottom: 4px double #0a0a23;
+  font-weight: bold;
+}
+
+tr[class="total"] th {
+  text-align: left;
+  padding: 0.5rem 0 0.25rem 0.5rem;
+}
+
+tr.total td {
+  text-align: right;
+  padding: 0 0.25rem;
+}
+
+tr.total td:nth-of-type(3) {
+  padding-right: 0.5rem;
+}
+
+tr.total:hover {
+  background-color: #99c9ff;
+}
+
+td.current {
+  font-style: italic;
+}
+
+tr.data {
+  background-image: linear-gradient(to bottom, #dfdfe2 1.845rem, white 1.845rem);
+}
+
+tr.data th {
+  text-align: left;
+  padding-top: 0.3rem;
+  padding-left: 0.5rem;
+}
+
+tr.data th .description {
+  display: block;
+  font-weight: normal;
+  font-style: italic;
+  padding: 1rem 0 0.75rem;
+  margin-right: -13.5rem;
+}
+
+tr.data td {
+  vertical-align: top;
+  padding: 0.3rem 0.25rem 0;
+  text-align: right;
+}
+
+
